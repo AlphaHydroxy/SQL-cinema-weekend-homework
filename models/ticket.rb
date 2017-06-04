@@ -27,11 +27,11 @@ class Ticket
     SqlRunner.run(sql)
   end
 
-  # def details()
-  #   sql = "SELECT customers.name, films.title 
-  #   FROM customers INNER JOIN films ON customers.id = tickets.customer_id INNER JOIN films ON films.id = tickets.film_id WHERE tickets.id = {@id};"
-  #   tickets = SqlRunner.run()
-  #   return tickets.map {|ticket| Ticket.new(ticket)}
-  # end
+  def details()
+    sql = "select customers.name, films.title  
+    from tickets inner join customers ON tickets.customer_id = customers.id inner join films ON tickets.film_id = films.id;"
+    tickets = SqlRunner.run()
+    return tickets.map {|ticket| Ticket.new(ticket)}
+  end
 
 end
